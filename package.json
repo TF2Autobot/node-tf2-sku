@@ -1,5 +1,5 @@
 {
-  "name": "tf2-sku-2",
+  "name": "@tf2autobot/tf2-sku",
   "version": "2.0.3",
   "description": "Format items as strings or objects, originally made by Nicklason, modified by IdiNium.",
   "main": "index.js",
@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/idinium96/node-tf2-sku-2.git"
+    "url": "git+https://github.com/TF2Autobot/node-tf2-sku.git"
   },
   "author": {
     "name": "Nicklas Marc Pedersen/IdiNium"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/idinium96/node-tf2-sku-2/issues"
+    "url": "https://github.com/TF2Autobot/node-tf2-sku/issues"
   },
-  "homepage": "https://github.com/idinium96/node-tf2-sku-2#readme",
+  "homepage": "https://github.com/TF2Autobot/node-tf2-sku#readme",
   "dependencies": {
     "defaults": "^1.0.3",
     "object-prettify": "^1.0.0"
