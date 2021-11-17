@@ -1,4 +1,4 @@
-# node-tf2-sku
+# @tf2autobot/tf2-sku
 
 Format items as strings or objects
 
@@ -11,7 +11,7 @@ The SKU can safely be used to identify items, since they contain all information
 ## Examples
 
 ```js
-const SKU = require('tf2-sku');
+const SKU = require('@tf2autobot/tf2-sku');
 
 // SKU of a Mann Co. Supply Crate Key - 5021 is the defindex, 6 is the quality
 const sku = '5021;6';
@@ -37,7 +37,7 @@ const item = SKU.fromString(sku);
 ```
 
 ```js
-const SKU = require('tf2-sku');
+const SKU = require('@tf2autobot/tf2-sku');
 
 // Mann Co. Supply Crate Key
 const item = {

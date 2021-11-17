@@ -5,18 +5,20 @@ const TEMPLATE = {
     defindex: 0,
     quality: 0,
     craftable: true,
+    tradable: true,
     killstreak: 0,
     australium: false,
-    festive: false,
     effect: null,
+    festive: false,
     paintkit: null,
     wear: null,
     quality2: null,
-    target: null,
     craftnumber: null,
     crateseries: null,
+    target: null,
     output: null,
-    outputQuality: null
+    outputQuality: null,
+    paint: null
 };
 
 /**
@@ -32,26 +34,31 @@ class SKU {
         const attributes = {};
 
         const parts = sku.split(';');
+        const partsCount = parts.length;
 
-        if (parts.length > 0) {
+        if (partsCount > 0) {
             if (isNum(parts[0])) {
                 attributes.defindex = parseInt(parts[0]);
             }
             parts.shift();
         }
 
-        if (parts.length > 0) {
+        if (partsCount > 0) {
             if (isNum(parts[0])) {
                 attributes.quality = parseInt(parts[0]);
             }
             parts.shift();
         }
 
-        for (let i = 0; i < parts.length; i++) {
+        const partsAdjustedCount = parts.length;
+
+        for (let i = 0; i < partsAdjustedCount; i++) {
             const attribute = parts[i].replace('-', '');
 
             if (attribute === 'uncraftable') {
                 attributes.craftable = false;
+            } else if (['untradeable', 'untradable'].includes(attribute)) {
+                attributes.tradable = false;
             } else if (attribute === 'australium') {
                 attributes.australium = true;
             } else if (attribute === 'festive') {
@@ -76,6 +83,8 @@ class SKU {
                 attributes.output = parseInt(attribute.substring(2));
             } else if (attribute.startsWith('oq') && isNum(attribute.substring(2))) {
                 attributes.outputQuality = parseInt(attribute.substring(2));
+            } else if (attribute.startsWith('p') && isNum(attribute.substring(1))) {
+                attributes.paint = parseInt(attribute.substring(1));
             }
         }
 
@@ -103,10 +112,13 @@ class SKU {
         if (item.craftable === false) {
             sku += ';uncraftable';
         }
+        if (item.tradable === false) {
+            sku += ';untradable';
+        }
         if (item.wear) {
             sku += `;w${item.wear}`;
         }
-        if (item.paintkit) {
+        if (typeof item.paintkit === 'number') {
             sku += `;pk${item.paintkit}`;
         }
         if (item.quality2 == 11) {
@@ -132,6 +144,9 @@ class SKU {
         }
         if (item.outputQuality) {
             sku += `;oq-${item.outputQuality}`;
+        }
+        if (item.paint) {
+            sku += `;p${item.paint}`;
         }
 
         return sku;
