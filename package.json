@@ -21,8 +21,7 @@
   },
   "homepage": "https://github.com/TF2Autobot/node-tf2-sku#readme",
   "dependencies": {
-    "defaults": "^1.0.3",
+    "defaults": "^1.0.4",
     "object-prettify": "^1.0.0"
-  },
-  "devDependencies": {}
+  }
 }
